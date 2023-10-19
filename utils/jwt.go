@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"jobs-api/api/models"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
@@ -8,10 +9,10 @@ import (
 
 var secretKey = []byte("your-secret-key") // Replace with your own secret key
 
-func GenerateJWTToken(email string) (string, error) {
+func GenerateJWTToken(user models.User) (string, error) {
 	claims := jwt.MapClaims{
-		"email": email,
-		"exp":   time.Now().Add(time.Hour * 24).Unix(), // Token expiration time (e.g., 24 hours from now)
+		"user": user,
+		"exp":  time.Now().Add(time.Hour * 24).Unix(), // Token expiration time (e.g., 24 hours from now)
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)

@@ -6,6 +6,10 @@ import (
 	"gopkg.in/go-playground/validator.v9"
 )
 
+func CreateValidation() *validator.Validate {
+	return validator.New()
+}
+
 func GenerateValidationMessages(validationErrors validator.ValidationErrors) map[string]string {
 	errorMessages := make(map[string]string)
 
