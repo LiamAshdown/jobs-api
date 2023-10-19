@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	"strings"
 
 	"gopkg.in/go-playground/validator.v9"
@@ -28,10 +29,14 @@ func GenerateValidationMessages(validationErrors validator.ValidationErrors) map
 			errorMessages[key] = field + " must be at most " + param + " characters long"
 		case "email":
 			errorMessages[key] = field + " must be a valid email address"
+		case "numeric":
+			errorMessages[key] = field + " must be a valid number"
 		default:
 			errorMessages[key] = field + " is invalid [" + tag + "]"
 		}
 	}
+
+	fmt.Println(errorMessages)
 
 	return errorMessages
 }

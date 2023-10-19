@@ -22,7 +22,7 @@ type Jobs []Job
 type CreateJobInput struct {
 	Title       string `json:"title" validate:"required,min=5,max=255"`
 	Description string `json:"description" validate:"required,min=5,max=255"`
-	Salary      string `json:"salary" validate:"required"`
+	Salary      string `json:"salary" validate:"required,numeric"`
 	Company     string `json:"company" validate:"required,min=5,max=255"`
 	UserID      int    `json:"user_id" validate:"required"`
 }
