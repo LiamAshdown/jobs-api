@@ -75,7 +75,7 @@ func DeleteJob(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	utils.RespondWithJSON(w, http.StatusOK, map[string]string{"message": "Job deleted successfully"})
+	utils.RespondWithJSON(w, http.StatusOK, map[string]interface{}{"message": "Job deleted successfully", "id": id})
 }
 
 func CreateJob(w http.ResponseWriter, r *http.Request) {
