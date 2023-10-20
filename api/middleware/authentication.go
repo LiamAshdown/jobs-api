@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"jobs-api/api/models"
+	"jobs-api/config"
 	"net/http"
 
 	"github.com/dgrijalva/jwt-go"
@@ -12,9 +13,6 @@ import (
 func AuthenticationMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		tokenString := r.Header.Get("Authorization")
-		test := r.Header.Get("Content-type")
-
-		fmt.Println(test)
 
 		// Strip the Bearer prefix from the token string
 		if len(tokenString) > 7 && tokenString[:7] == "Bearer " {
@@ -30,7 +28,7 @@ func AuthenticationMiddleware(next http.Handler) http.Handler {
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 				return nil, fmt.Errorf("Unexpected signing method")
 			}
-			return []byte("your-secret-key"), nil // Replace with your JWT secret key
+			return []byte(config.GetConfig().App.JWTKey), nil
 		})
 
 		if err != nil {

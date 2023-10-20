@@ -17,8 +17,9 @@ type Config struct {
 		DataBase string `yaml:"database"`
 	}
 	App struct {
-		Name string `yaml:"name"`
-		Port int    `yaml:"port"`
+		Name   string `yaml:"name"`
+		Port   int    `yaml:"port"`
+		JWTKey string `yaml:"jwtKey"`
 	}
 	Log struct {
 		Path string `yaml:"path"`

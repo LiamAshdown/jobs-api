@@ -9,6 +9,7 @@ database:
 app:
   name: 'Jobs API'
   port: 8080
+  jwtKey: 'SUPER_SECRET_KEY'
 
 log:
   path: root
